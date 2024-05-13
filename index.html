@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="normalize.css">
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+        }
+
+        body > div {
+            height: 80%;
+            width: 25%;
+            border: 2px solid black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: white;
+        }
+
+
+        body > div > div:first-child {
+            width: 90%;
+            height: 35%;
+            position: absolute;
+            top: 8vh;
+            left: 17px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            border-radius: 12px;
+        }
+        body > div > div:first-child>h1{
+            position: relative;
+            font-family: monospace;
+            top: 35%;
+            right: -55%;
+        }
+
+        body > div > div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: 100%;
+            height: 48%;
+            position: absolute;
+            top: calc(36vh + 2px);
+            margin-top: 5px;
+
+        }
+        body>div>h1{
+            font-family: cursive;
+            font-size: 18px;
+            position: absolute;
+            color: midnightblue;
+            left: 132px;
+            top: 4px;
+        }
+        body>div>div:nth-child(2)>button{
+            background-color: black;
+            color: white;
+            font-weight: bolder;
+            border-radius: 20%;
+            margin: 5px;
+            font-size: 25px;
+            height: 50px;
+        }
+        #division{
+            color: orangered;
+        }
+        #multiply{
+            color: orangered;
+        }
+        #minus{
+            color: orangered;
+        }
+        #plus{
+            color: orangered;
+        }
+        #assign{
+            color: orangered;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div>
+    <div>
+        <input id="inputField" type="text" >
+    </div>
+    <div>
+        <button id="reset">C</button>
+        <button id="plusOrMinus">+/-</button>
+        <button id="back"><-</button>
+
+        <button class="symbol">/</button>
+
+        <button class="btnValue">7</button>
+        <button class="btnValue">8</button>
+        <button class="btnValue">9</button>
+
+        <button class="symbol">*</button>
+
+        <button class="btnValue">4</button>
+        <button class="btnValue">5</button>
+        <button class="btnValue">6</button>
+
+        <button class="symbol">-</button>
+
+        <button class="btnValue">1</button>
+        <button class="btnValue">2</button>
+        <button class="btnValue">3</button>
+
+        <button class="symbol">+</button>
+
+        <button class="btnValue">0</button>
+        <button class="btnValue">00</button>
+
+        <button id="fulstop">.</button>
+        <button id="assign">=</button>
+    </div>
+    <h1>Calculator</h1>
+</div>
+
+<script src="jquery-3.7.1.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
