@@ -1,36 +1,56 @@
+let numbers = [];
+let operators = [];
 
-$(".btnValue").click(function () {
-    let text = $(this).text();
-    setText(text);
+$('.number').click(function () {
+    appendToDisplay($(this).text());
 });
 
-$(".symbol").click(function () {
-    let text = $(this).text();
-
-    let value = $("#inputField").val();
-
-    $("#inputField").val(value+text)
-
-
-})
-
-$("#reset").on('click',()=>{
-    $("#inputField").val("");
-})
-
-$("#assign").on('click',()=>{
-    let val = $("#inputField").val();
-    let eval1 = eval(val);
-    $("#inputField").val(eval1);
-
-});
-
-$("#fulstop").on('click',()=>{
-    let val = $("#inputField").val();
-    $("#inputField").val(val+".")
-})
-
-function setText(value) {
-    let val = $("#inputField").val();
-    $("#inputField").val(val+value)
+function appendToDisplay(value) {
+    $('#display-input').val($('#display-input').val() + value);
 }
+
+$('.symbol').click(function () {
+    let currentValue = $('#display-input').val();
+    numbers.push(currentValue);
+    operators.push($(this).text());
+    $('#symbol-display').val($(this).text())
+    $('#display-input').val(""); // Clear display for next number input
+});
+
+$('#btn-c').on('click', () => {
+    $('#display-input').val("");
+    $('#symbol-display').val("")
+    numbers = [];
+    operators = [];
+});
+
+$('.equal').click(function () {
+    let currentValue = $('#display-input').val();
+    numbers.push(currentValue);
+
+    // Perform calculations in sequence
+    let result = parseFloat(numbers[0]);
+    for (let i = 0; i < operators.length; i++) {
+        let nextNumber = parseFloat(numbers[i + 1]);
+        if (operators[i] === '+') {
+            result += nextNumber;
+        } else if (operators[i] === '-') {
+            result -= nextNumber;
+        } else if (operators[i] === 'x') {
+            result *= nextNumber;
+        } else if (operators[i] === '/') {
+            result /= nextNumber;
+        }
+    }
+
+    $('#display-input').val(result);
+    numbers = [];
+    operators = [];
+});
+
+$('#btn-x').click(function () {
+    let currentValue = $('#display-input').val();
+    if (currentValue.length > 0) {
+        $('#display-input').val(currentValue.slice(0, -1));
+    }
+});
